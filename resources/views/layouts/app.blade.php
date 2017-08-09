@@ -64,7 +64,7 @@
                                         </form>
                                     </li>
                                     <li>
-                                      <a href="{{ route('change') }}"> Cambiar password</a>
+                                      <a href="{{ route('change') }}"> Cambiar contraseña</a>
                                     </li>
                                 </ul>
                             </li>
