@@ -4,12 +4,14 @@
 <div class="container">
     <div class="row">
       @if (session('status'))
-        <div class="alert alert-success">
+        <div class="alert alert-success alert-dismissable">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             {{ session('status') }}
         </div>
       @endif
       @if (session('error'))
-        <div class="alert alert-danger">
+        <div class="alert alert-danger alert-dismissable">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             {{ session('error') }}
         </div>
       @endif
