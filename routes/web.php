@@ -20,3 +20,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/password/change', 'UserController@index')->name('change');
 Route::post('/user/credentials','UserController@postCredentials')->name('save');
+
+#Route::get('api/user', 'UserController@all')->middleware('auth.basic');

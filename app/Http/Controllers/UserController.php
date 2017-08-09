@@ -64,5 +64,12 @@ class UserController extends Controller
     {
       return redirect()->to('/');
     }
+
   }
+
+  public function all() {
+      $todos = User::where('id','=',Auth::user()->id)->get();
+      return $todos;
+  }
+
 }
