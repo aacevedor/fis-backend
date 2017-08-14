@@ -58,6 +58,11 @@
                                     Forgot Your Password?
                                 </a>
                             </div>
+                            <div class="col-md-8 col-md-offset-4">
+                              <a href="{{ route('login-facebook')}}" class="btn btn-primary">
+                                  Login facebook
+                              </a>
+                            </div>
                         </div>
                     </form>
                 </div>

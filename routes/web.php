@@ -18,7 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/password/change', 'UserController@index')->name('change');
-Route::post('/user/credentials','UserController@postCredentials')->name('save');
+Route::get('/password/change', 'UsersController@change')->name('change');
+Route::post('/user/credentials','UsersController@postCredentials')->name('save');
 
-#Route::get('api/user', 'UserController@all')->middleware('auth.basic');
+
+Route::get('login/facebook', 'UsersController@redirectToProvider')->name('login-facebook');
+Route::get('login/facebook/callback', 'UsersController@handleProviderCallback');
