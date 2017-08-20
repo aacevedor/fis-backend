@@ -38,7 +38,7 @@ return [
     'facebook' => [
         'client_id' => '261284341025174',
         'client_secret' => 'dbbd8c1486333079e64ccb7fb5369be5',
-        'redirect' => 'http://fia.local/login/facebook/callback',
+        'redirect' => env('APP_URL').'/login/facebook/callback',
     ],
 
 ];
