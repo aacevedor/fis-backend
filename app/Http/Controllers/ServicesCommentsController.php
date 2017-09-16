@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Services;
+use App\ServicesComments;
 use Illuminate\Http\Request;
 
-class ServicesController extends Controller
+class ServicesCommentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        return Services::all();
+        //
     }
 
     /**
@@ -35,28 +35,27 @@ class ServicesController extends Controller
      */
     public function store(Request $request)
     {
-        $service = Services::create($request->all());
-        return response()->json($service, 201);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Services  $services
+     * @param  \App\ServicesComments  $servicesComments
      * @return \Illuminate\Http\Response
      */
-    public function show(Services $service)
+    public function show(ServicesComments $servicesComments)
     {
-        return $service;
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Services  $services
+     * @param  \App\ServicesComments  $servicesComments
      * @return \Illuminate\Http\Response
      */
-    public function edit(Services $services)
+    public function edit(ServicesComments $servicesComments)
     {
         //
     }
@@ -65,24 +64,22 @@ class ServicesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Services  $services
+     * @param  \App\ServicesComments  $servicesComments
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Services $services)
+    public function update(Request $request, ServicesComments $servicesComments)
     {
-        $services->update($request->all());
-        return response()->json($services, 200);
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Services  $services
+     * @param  \App\ServicesComments  $servicesComments
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Services $services)
+    public function destroy(ServicesComments $servicesComments)
     {
-        $services->delete();
-        return response()->json(null, 204);
+        //
     }
 }

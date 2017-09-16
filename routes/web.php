@@ -25,7 +25,8 @@ Route::post('/user/credentials','UsersController@postCredentials')->name('save')
 Route::get('login/facebook', 'UsersController@redirectToProvider')->name('login-facebook');
 Route::get('login/facebook/callback', 'UsersController@handleProviderCallback');
 
-Route::resource('citys', 'CitysController');
-Route::resource('countrys', 'CountrysController');
-Route::resource('services', 'ServicesController');
-Route::resource('services-types', 'ServicesTypesController');
+Route::resource('api/citys', 'CitysController');
+Route::resource('api/countrys', 'CountrysController');
+Route::resource('api/services', 'ServicesController');
+Route::resource('api/services-types', 'ServicesTypesController');
+Route::resource('api/users', 'UsersController');

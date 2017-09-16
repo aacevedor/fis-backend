@@ -22,3 +22,21 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+$factory->define(App\Services\ServicesTypes::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->realText(10,1),
+    ];
+});
+
+
+$factory->define(App\Services::class, function (Faker\Generator $faker) use ($factory) {
+    return [
+        'name' => $faker->name,
+        'services_type_id' => $factory->create(App\Services\ServicesTypes::class)->id,
+        'description' =>  $faker->realText( 200, 2 ),            // generate text with 10 words
+        'users_id' => $factory->create(App\User::class)->id,
+        'price' =>  $faker->randomNumber( 6, $strict = false )  // Generate number with six digits
+    ];
+});
