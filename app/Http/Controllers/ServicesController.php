@@ -35,7 +35,8 @@ class ServicesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $service = Services::create($request->all());
+        return response()->json($service, 201);
     }
 
     /**
@@ -69,7 +70,8 @@ class ServicesController extends Controller
      */
     public function update(Request $request, Services $services)
     {
-        //
+        $services->update($request->all());
+        return response()->json($services, 200);
     }
 
     /**
@@ -80,6 +82,7 @@ class ServicesController extends Controller
      */
     public function destroy(Services $services)
     {
-        //
+        $services->delete();
+        return response()->json(null, 204);
     }
 }

@@ -14,7 +14,7 @@ class CountrysController extends Controller
      */
     public function index()
     {
-        //
+        return Countrys::all();
     }
 
     /**
@@ -35,7 +35,8 @@ class CountrysController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $country = Countrys::create($request->all());
+        return  response()->json($country, 201);
     }
 
     /**
@@ -44,9 +45,9 @@ class CountrysController extends Controller
      * @param  \App\Countrys  $countrys
      * @return \Illuminate\Http\Response
      */
-    public function show(Countrys $countrys)
+    public function show(Countrys $country)
     {
-        //
+        return $country;
     }
 
     /**
@@ -69,7 +70,8 @@ class CountrysController extends Controller
      */
     public function update(Request $request, Countrys $countrys)
     {
-        //
+        $countrys->update($request->all());
+        return response()->json($countrys, 200);
     }
 
     /**
@@ -80,6 +82,7 @@ class CountrysController extends Controller
      */
     public function destroy(Countrys $countrys)
     {
-        //
+        $countrys->delete();
+        return response()->json(null, 205);
     }
 }

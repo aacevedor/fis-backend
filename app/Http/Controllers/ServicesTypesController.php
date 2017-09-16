@@ -35,7 +35,8 @@ class ServicesTypesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $service_type = ServicesTypes::create($request->all());
+        return response()->json($service_type, 201);
     }
 
     /**
@@ -46,7 +47,7 @@ class ServicesTypesController extends Controller
      */
     public function show(ServicesTypes $servicesTypes)
     {
-        //
+        return $servicesTypes;
     }
 
     /**
@@ -69,7 +70,8 @@ class ServicesTypesController extends Controller
      */
     public function update(Request $request, ServicesTypes $servicesTypes)
     {
-        //
+        $servicesTypes->update($request->all());
+        return response()->json($servicesTypes, 200);
     }
 
     /**
@@ -80,6 +82,7 @@ class ServicesTypesController extends Controller
      */
     public function destroy(ServicesTypes $servicesTypes)
     {
-        //
+        $ServicesTypes->delete();
+        return response()->json(null, 204);
     }
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\City;
+use App\Citys;
 use Illuminate\Http\Request;
 
-class CityController extends Controller
+class CitysController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class CityController extends Controller
      */
     public function index()
     {
-        //
+        return Citys::all();
     }
 
     /**
@@ -35,27 +35,28 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $citys = Citys::create($request->all());
+       return response()->json($citys, 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\City  $city
+     * @param  \App\Citys  $citys
      * @return \Illuminate\Http\Response
      */
-    public function show(City $city)
+    public function show(Citys $city)
     {
-        //
+        return $city;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\City  $city
+     * @param  \App\Citys  $citys
      * @return \Illuminate\Http\Response
      */
-    public function edit(City $city)
+    public function edit(Citys $citys)
     {
         //
     }
@@ -64,22 +65,24 @@ class CityController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\City  $city
+     * @param  \App\Citys  $citys
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, City $city)
+    public function update(Request $request, Citys $citys)
     {
-        //
+        $citys->update($request->all());
+        return response()->json($citys, 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\City  $city
+     * @param  \App\Citys  $citys
      * @return \Illuminate\Http\Response
      */
-    public function destroy(City $city)
+    public function destroy(Citys $citys)
     {
-        //
+        $citys->delete();
+        return response()->json(null, 204);
     }
 }
