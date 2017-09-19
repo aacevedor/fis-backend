@@ -30,3 +30,7 @@ Route::resource('api/countrys', 'CountrysController');
 Route::resource('api/services', 'ServicesController');
 Route::resource('api/services-types', 'ServicesTypesController');
 Route::resource('api/users', 'UsersController');
+Route::resource('api/users-profile', 'UsersProfileController');
+
+Route::resource('api/services-status', 'ServicesStatusController');
+Route::resource('api/services-confirm', 'ServicesConfirmController');

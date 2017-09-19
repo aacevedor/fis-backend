@@ -14,7 +14,7 @@ class UsersProfileController extends Controller
      */
     public function index()
     {
-        //
+        return UsersProfile::all();
     }
 
     /**
@@ -46,7 +46,7 @@ class UsersProfileController extends Controller
      */
     public function show(UsersProfile $usersProfile)
     {
-        //
+        return $usersProfile;
     }
 
     /**
@@ -82,4 +82,5 @@ class UsersProfileController extends Controller
     {
         //
     }
+
 }

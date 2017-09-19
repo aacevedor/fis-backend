@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
+use App\Services;
+use App\UsersProfile;
 
 class User extends Authenticatable
 {
@@ -27,7 +29,21 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function user(){
-      return $this->belongsTo('App\User');
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+
+     public function profile(){
+      return $this->hasMany(UsersProfile::class);
+     }
+
+    public function services(){
+      return $this->hasMany(Services::class);
     }
+
+
+
 }
