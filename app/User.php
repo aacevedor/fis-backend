@@ -37,7 +37,7 @@ class User extends Authenticatable
      */
 
      public function profile(){
-      return $this->hasMany(UsersProfile::class);
+      return $this->hasOne(UsersProfile::class);
      }
 
     public function services(){
