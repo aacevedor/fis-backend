@@ -180,6 +180,7 @@ return [
         Barryvdh\Cors\ServiceProvider::class,
 
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
 
 
     ],

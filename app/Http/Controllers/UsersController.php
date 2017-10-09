@@ -52,7 +52,11 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
-        return $user->profile;
+      $user->{'profile'} = $user->profile;
+      $user->{'services'} = $user->services;
+      $user->{'roles'} = $user->getAllPermissions();
+      return $user;
+
     }
 
     /**
