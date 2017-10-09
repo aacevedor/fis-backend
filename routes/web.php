@@ -36,3 +36,7 @@ Route::resource('api/users-profile', 'UsersProfileController');
 
 Route::resource('api/services-status', 'ServicesStatusController');
 Route::resource('api/services-confirm', 'ServicesConfirmController');
+Route::resource('api/services-comments', 'ServicesCommentsController');
+
+
+Route::get('api/user/confirmation/{ionic_id}', 'UsersController@confirmation')->name('user-confirmation');

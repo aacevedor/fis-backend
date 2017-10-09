@@ -20,7 +20,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-      return User::all();
+      return User::role('provider')->get();
     }
 
     /**
@@ -41,7 +41,17 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $user = User::create([
+              'name' => $request->name,
+              'email' => $request->email,
+              'ionic_id' => $request->ionic_id,
+              'password' => bcrypt($request->password),
+        ]);
+
+        $user->assignRole('authenticated');
+
+        return $user;
     }
 
     /**
@@ -236,5 +246,12 @@ class UsersController extends Controller
         ]);
         return $user;
 
+    }
+
+    public function confirmation($ionic_id)
+    {
+      $user = User::where('ionic_id',$ionic_id)->get();
+
+      return $user;
     }
 }

@@ -14,7 +14,7 @@ class ServicesCommentsController extends Controller
      */
     public function index()
     {
-        //
+        return ServicesComments::all();
     }
 
     /**
@@ -44,9 +44,9 @@ class ServicesCommentsController extends Controller
      * @param  \App\ServicesComments  $servicesComments
      * @return \Illuminate\Http\Response
      */
-    public function show(ServicesComments $servicesComments)
+    public function show(ServicesComments $servicesComment)
     {
-        //
+        return $servicesComment;
     }
 
     /**

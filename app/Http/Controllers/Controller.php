@@ -18,20 +18,50 @@ class Controller extends BaseController
 
     public function devel()
     {
+      foreach ( [21] as $key => $value) {
+        $user = User::find($value);
+        $user->assignRole('authenticated');
+      }
 
-      #$role = Role::create(['name' => 'admin']);
-      // $permission = Permission::create(['name' => 'delete user']);
-      // $permission = Permission::create(['name' => 'update user']);
+
+      // $role = Role::create(['name' => 'provider']);
+      // $role = Role::create(['name' => 'authenticated']);
+
+      // $permission = Permission::create(['name' => 'show user']);
       //
       //
-      // $role = Role::findByName('admin');
-      // $role->givePermissionTo('delete user');
-      // $role->givePermissionTo('update user');
+      // $permission = Permission::create(['name' => 'show service']);
+      // $permission = Permission::create(['name' => 'delete service']);
+      // $permission = Permission::create(['name' => 'update service']);
+      // $permission = Permission::create(['name' => 'create service']);
+      // $permission = Permission::create(['name' => 'cancel service']);
+      // $permission = Permission::create(['name' => 'solicit service']);
+      //
+      // $permission = Permission::create(['name' => 'show comment']);
+      // $permission = Permission::create(['name' => 'delete comment']);
+      // $permission = Permission::create(['name' => 'update comment']);
+      // $permission = Permission::create(['name' => 'create comment']);
 
-      $user = User::find(21);
-      dd($user->can('edit user'));
 
-      dd($user);
+
+
+      //
+      //
+      //
+      // $role->givePermissionTo('create service');
+      // $role->givePermissionTo('update service');
+      //
+      //
+      // $role->givePermissionTo('show comment');
+      // $role->givePermissionTo('create comment');
+
+
+
+
+      // $user = User::find(21);
+      // dd($user->can('edit user'));
+      //
+      // dd($user);
 
       dd('OK');
     }

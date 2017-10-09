@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\UsersProfile;
+use App\User;
+
+
 use Illuminate\Http\Request;
 
 class UsersProfileController extends Controller
@@ -14,7 +17,11 @@ class UsersProfileController extends Controller
      */
     public function index()
     {
-        return UsersProfile::all();
+        $users = array();
+        foreach( User::role('provider')->take(3)->get() as $key => $user){
+            $users[] = $user->profile;
+        }
+        return $users;
     }
 
     /**

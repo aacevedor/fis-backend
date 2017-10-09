@@ -14,7 +14,12 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        return Services::all();
+        $services = Services::take(3)->get();
+
+        foreach ($services as $key => $service) {
+          $service->user;
+        }
+        return $services;
     }
 
     /**
