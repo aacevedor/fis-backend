@@ -42,15 +42,21 @@ class UsersController extends Controller
     public function store(Request $request)
     {
 
-        $user = User::create([
-              'name' => $request->name,
-              'email' => $request->email,
-              'ionic_id' => $request->ionic_id,
-              'password' => bcrypt($request->password),
-        ]);
+        $user = User::where('ionic_id',$request->ionic_id)->first();
+        if($user){
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->ionic_id =  $request->ionic_id;
+            $user->save();
 
-        $user->assignRole('authenticated');
-
+        }else{
+          $user = User::firstOrCreate([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt('p0p01234'),
+                'ionic_id' => $request->ionic_id,
+          ]);
+        }
         return $user;
     }
 
@@ -89,7 +95,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        return 'OK';
     }
 
     /**

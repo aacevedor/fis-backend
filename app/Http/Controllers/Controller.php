@@ -18,6 +18,9 @@ class Controller extends BaseController
 
     public function devel()
     {
+      $user = User::where('ionic_id','77d633fb-4b21-4ff9-bad0-b75de2577916')->first();
+      dd($user);
+
       foreach ( [21] as $key => $value) {
         $user = User::find($value);
         $user->assignRole('authenticated');
