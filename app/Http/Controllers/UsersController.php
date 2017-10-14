@@ -257,7 +257,6 @@ class UsersController extends Controller
     public function confirmation($ionic_id)
     {
       $user = User::where('ionic_id',$ionic_id)->get();
-
       return $user;
     }
 }
