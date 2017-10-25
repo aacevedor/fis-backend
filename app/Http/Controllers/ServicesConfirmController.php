@@ -33,9 +33,14 @@ class ServicesConfirmController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, ServicesConfirm $servicesConfirm)
     {
-        //
+
+      $result = $servicesConfirm->save($request->all());
+      // $service_confirm = ServicesConfirm::firstOrCreate([
+      //   ''=>$request
+      // ]);E
+      return response()->json( $result );
     }
 
     /**
