@@ -18,13 +18,23 @@ class Controller extends BaseController
 
     public function devel()
     {
-      $user = User::where('ionic_id','77d633fb-4b21-4ff9-bad0-b75de2577916')->first();
-      dd($user);
 
-      foreach ( [21] as $key => $value) {
-        $user = User::find($value);
-        $user->assignRole('authenticated');
-      }
+      $user = User::firstOrCreate([
+            'name' => 'ASDASDssssssssASD',
+            'email' => 'AssssSDASsssD@ASDASsssssssD.COM',
+            'password' => bcrypt('p0p01234'),
+            'ionic_id' => 'ASDASD-ADA-SD-ASD-ASD-AS-D',
+      ]);
+
+      dd($user->name);
+
+      // $user = User::where('ionic_id','77d633fb-4b21-4ff9-bad0-b75de2577916')->first();
+      // dd($user);
+      //
+      // foreach ( [21] as $key => $value) {
+      //   $user = User::find($value);
+      //   $user->assignRole('authenticated');
+      // }
 
 
       // $role = Role::create(['name' => 'provider']);

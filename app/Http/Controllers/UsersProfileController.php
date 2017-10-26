@@ -42,7 +42,7 @@ class UsersProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -76,7 +76,10 @@ class UsersProfileController extends Controller
      */
     public function update(Request $request, UsersProfile $usersProfile)
     {
-        //
+
+        $usersProfile->update($request->all());
+
+        return $usersProfile;
     }
 
     /**

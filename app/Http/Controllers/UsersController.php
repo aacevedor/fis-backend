@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\UsersProfile;
 use Socialite;
 class UsersController extends Controller
 {
@@ -56,6 +57,21 @@ class UsersController extends Controller
                 'password' => bcrypt('p0p01234'),
                 'ionic_id' => $request->ionic_id,
           ]);
+
+          $profile = new UsersProfile();
+          $profile->user_id = $user->id;
+          $profile->first_name = $user->name;
+          $profile->last_name = '';
+          $profile->city_id = 1;
+          $profile->gender = 'male';
+          $profile->description = '';
+          $profile->profession = '';
+          $profile->phone = 0;
+          $profile->address = '';
+          $profile->geolocalization = json_encode(['lat'=>0,'long'=>0]);
+          $profile->image = '';
+          $profile->save();
+
         }
         return $user;
     }
