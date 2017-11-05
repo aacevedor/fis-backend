@@ -40,3 +40,4 @@ Route::resource('api/services-comments', 'ServicesCommentsController');
 
 
 Route::get('api/user/confirmation/{ionic_id}', 'UsersController@confirmation')->name('user-confirmation');
+Route::get('api/notification/{type}/{id}', 'UsersController@adminNotification')->name('user-change-rol');

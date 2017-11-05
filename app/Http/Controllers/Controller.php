@@ -19,6 +19,8 @@ class Controller extends BaseController
     public function devel()
     {
 
+      $user = User::find(56);
+      dd($user);
       $user = User::firstOrCreate([
             'name' => 'ASDASDssssssssASD',
             'email' => 'AssssSDASsssD@ASDASsssssssD.COM',

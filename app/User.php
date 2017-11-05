@@ -8,6 +8,9 @@ use Spatie\Permission\Traits\HasRoles;
 use Laravel\Passport\HasApiTokens;
 use App\Services;
 use App\UsersProfile;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ChangeProfile;
+
 
 class User extends Authenticatable
 {
@@ -49,5 +52,19 @@ class User extends Authenticatable
       */
     public function services(){
       return $this->hasMany(Services::class);
+    }
+
+
+    public function SendMail($template){
+        switch ($template) {
+          case 'changeRole':
+            Mail::to('myafarinc@gmail.com')->send(new ChangeProfile());
+            break;
+
+          default:
+            Mail::to($this->email)->send(new ChangeProfile());
+            break;
+        }
+
     }
 }

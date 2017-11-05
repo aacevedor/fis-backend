@@ -275,4 +275,11 @@ class UsersController extends Controller
       $user = User::where('ionic_id',$ionic_id)->get();
       return $user;
     }
+
+    public function adminNotification($type, $id)
+    {
+      $user = User::find($id);
+      $user->SendMail($type);
+      return 200;
+    }
 }
