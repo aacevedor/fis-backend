@@ -14,8 +14,8 @@ class ServicesConfirm extends Model
   protected $fillable = [
       'service_id', 'price','service_time','total_price','request_date','delivery_date','status_id','user_id'
   ];
+   
 
-  
   /**
    * The attributes that should be hidden for arrays.
    *
