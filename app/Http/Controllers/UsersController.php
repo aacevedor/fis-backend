@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\UsersProfile;
+use App\ServicesConfirm;
+
+
 use Socialite;
 class UsersController extends Controller
 {
@@ -86,6 +89,8 @@ class UsersController extends Controller
     {
       $user->{'profile'} = $user->profile;
       $user->{'services'} = $user->services;
+      foreach ( $user->servicesConfirm as $key => $value) { $value->services;}
+      $user->{'services_confirm'} = $user->servicesConfirm;
       $user->{'roles'} = $user->getAllPermissions();
       return $user;
 

@@ -14,7 +14,7 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        $services = Services::take(3)->get();
+        $services = Services::orderBy('created_at','desc')->take(3)->get();
 
         foreach ($services as $key => $service) {
           $service->user;

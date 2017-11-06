@@ -10,6 +10,8 @@ use App\Services;
 use App\UsersProfile;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ChangeProfile;
+use App\ServicesConfirm;
+
 
 
 class User extends Authenticatable
@@ -53,6 +55,15 @@ class User extends Authenticatable
     public function services(){
       return $this->hasMany(Services::class);
     }
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+   public function servicesConfirm(){
+     return $this->hasMany(servicesConfirm::class);
+   }
 
 
     public function SendMail($template){

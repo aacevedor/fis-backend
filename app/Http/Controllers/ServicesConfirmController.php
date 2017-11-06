@@ -14,7 +14,8 @@ class ServicesConfirmController extends Controller
      */
     public function index()
     {
-        //
+      $services = ServicesConfirm::orderBy('created_at','desc')->get();
+      return $services;
     }
 
     /**
@@ -33,14 +34,10 @@ class ServicesConfirmController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, ServicesConfirm $servicesConfirm)
+    public function store(Request $request)
     {
-
-      $result = $servicesConfirm->save($request->all());
-      // $service_confirm = ServicesConfirm::firstOrCreate([
-      //   ''=>$request
-      // ]);E
-      return response()->json( $result );
+      $service = ServicesConfirm::create($request->all());
+      return response()->json($service, 201);
     }
 
     /**

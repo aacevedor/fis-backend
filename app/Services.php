@@ -12,6 +12,9 @@ use App\User;
 
 class Services extends Model
 {
+
+    protected $fillable = ['name', 'description', 'services_type_id','user_id','price'];
+
     public function service_type(){
       return $this->hasOne(ServicesTypes::class);
     }

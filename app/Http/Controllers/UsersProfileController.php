@@ -18,7 +18,7 @@ class UsersProfileController extends Controller
     public function index()
     {
         $users = array();
-        foreach( User::role('provider')->take(3)->get() as $key => $user){
+        foreach( User::role('provider')->orderBy('updated_at','desc')->take(3)->get() as $key => $user){
             $users[] = $user->profile;
         }
         return $users;
