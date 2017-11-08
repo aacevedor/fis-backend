@@ -277,8 +277,16 @@ class UsersController extends Controller
 
     public function confirmation($ionic_id)
     {
-      $user = User::where('ionic_id',$ionic_id)->get();
-      return $user;
+      $user = User::where('ionic_id',$ionic_id)->first();
+      if($user){
+        $user->{'profile'} = $user->profile;
+        $user->{'services'} = $user->services;
+        foreach ( $user->servicesConfirm as $key => $value) { $value->services;}
+        $user->{'services_confirm'} = $user->servicesConfirm;
+        $user->{'roles'} = $user->getAllPermissions();
+        return $user;
+      }
+      return '404';
     }
 
     public function adminNotification($type, $id)
