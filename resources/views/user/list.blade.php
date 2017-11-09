@@ -40,7 +40,7 @@
           </div>
           <div class="col col-lg-3">
             <span>{{$user->email}}</span>
-          </div>
+          </div> 
           <div class="col col-lg-2">
             {!! Form::model($entity, array('route' => array('users.update', $user->id),  'method' => 'PUT') )!!}
               <div class="col col-lg-1">
