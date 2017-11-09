@@ -10,6 +10,8 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\User;
+use App\PushNotification;
+
 
 class Controller extends BaseController
 {
@@ -19,9 +21,10 @@ class Controller extends BaseController
     public function devel()
     {
 
-      $user = User::find(18);
-      $user->roles()->attach([3]);
+      $user = new PushNotification();
+      dd($user);
 
+      $user = User::find(56);
       dd($user);
       $user = User::firstOrCreate([
             'name' => 'ASDASDssssssssASD',
