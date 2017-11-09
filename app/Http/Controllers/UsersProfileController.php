@@ -19,7 +19,9 @@ class UsersProfileController extends Controller
     {
         $users = array();
         foreach( User::role('provider')->orderBy('updated_at','desc')->take(3)->get() as $key => $user){
-            $users[] = $user->profile;
+            $user->profile;
+            $user->services;
+            $users[] = $user;
         }
         return $users;
     }
