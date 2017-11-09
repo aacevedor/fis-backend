@@ -15,6 +15,26 @@ class UsersProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function list()
+    {
+        $entity = new User;
+        $users = array();
+        foreach( User::all() as $key => $user){
+            $user->profile;
+            $user->services;
+            $users[] = $user;
+            #dd( $user->hasRole('admin') );
+        }
+        #dd($users);
+        return view('user.list', ['entity'=>$entity ,'users' => $users ] );
+
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $users = array();

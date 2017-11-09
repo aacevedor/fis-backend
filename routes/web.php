@@ -43,3 +43,5 @@ Route::resource('api/push', 'PushNotificationController');
 
 Route::get('api/user/confirmation/{ionic_id}', 'UsersController@confirmation')->name('user-confirmation');
 Route::get('api/notification/{type}/{id}', 'UsersController@adminNotification')->name('user-change-rol');
+
+Route::get('users', 'UsersProfileController@list')->name('users.list');

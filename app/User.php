@@ -78,4 +78,15 @@ class User extends Authenticatable
         }
 
     }
+
+    /**
+   * Detach all roles from a user
+   *
+   * @return object
+   */
+    public function detachAllRoles()
+    {
+        \DB::table('user_has_roles')->where('user_id', $this->id)->delete();
+        return $this;
+    }
 }
