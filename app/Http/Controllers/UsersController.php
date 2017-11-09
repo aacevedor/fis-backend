@@ -288,7 +288,7 @@ class UsersController extends Controller
         $user->{'services'} = $user->services;
         foreach ( $user->servicesConfirm as $key => $value) { $value->services;}
         $user->{'services_confirm'} = $user->servicesConfirm;
-        $user->{'roles'} = $user->getAllPermissions();
+        $user->{'roles'} = $user->roles()->get()[0];
         return $user;
       }
       return '404';
