@@ -19,7 +19,9 @@ class Controller extends BaseController
     public function devel()
     {
 
-      $user = User::find(56);
+      $user = User::find(18);
+      $user->roles()->attach([3]);
+
       dd($user);
       $user = User::firstOrCreate([
             'name' => 'ASDASDssssssssASD',

@@ -61,6 +61,8 @@ class UsersController extends Controller
                 'ionic_id' => $request->ionic_id,
           ]);
 
+          $user->roles()->attach([2]);
+
           $profile = new UsersProfile();
           $profile->user_id = $user->id;
           $profile->first_name = $user->name;
@@ -74,6 +76,7 @@ class UsersController extends Controller
           $profile->geolocalization = json_encode(['lat'=>0,'long'=>0]);
           $profile->image = '';
           $profile->save();
+
 
         }
         return $user;
