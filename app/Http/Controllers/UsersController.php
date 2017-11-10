@@ -121,6 +121,7 @@ class UsersController extends Controller
     {
         $user->detachAllRoles();
         $user->roles()->attach($request->get('role'));
+        flash('Usuario guardado')->success();
         return redirect()->to('/users');
     }
 
@@ -130,9 +131,11 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        flash('Usuario eliminado')->success();
+        return redirect()->to('/users');
     }
 
     /**

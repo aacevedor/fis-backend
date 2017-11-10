@@ -88,11 +88,14 @@
                 </div>
             </div>
         </nav>
-
+         @include('flash::message')
         @yield('content')
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+      $('div.alert').not('.alert-important').delay(1000).fadeOut(350);
+    </script>
 </body>
 </html>

@@ -182,6 +182,7 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
 
 
     ],

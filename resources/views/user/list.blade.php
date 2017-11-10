@@ -40,29 +40,31 @@
           </div>
           <div class="col col-lg-3">
             <span>{{$user->email}}</span>
-          </div> 
+          </div>
           <div class="col col-lg-2">
             {!! Form::model($entity, array('route' => array('users.update', $user->id),  'method' => 'PUT') )!!}
               <div class="col col-lg-1">
-                {!! Form::checkbox('role[]', 2, $user->hasRole('authenticated')) !!}
+                {!! Form::radio('role[]', 2, $user->hasRole('authenticated')) !!}
               </div>
               <div class="col col-lg-1">
-                {!! Form::checkbox('role[]', 3, $user->hasRole('provider')) !!}
+                {!! Form::radio('role[]', 3, $user->hasRole('provider')) !!}
               </div>
               <div class="col col-lg-1">
-                {!! Form::checkbox('role[]', 1, $user->hasRole('admin')) !!}
+                {!! Form::radio('role[]', 1, $user->hasRole('admin')) !!}
               </div>
               <div class="col col-lg-1">
-                <button type="submit" name="save">save</button>
+                <button type="submit" name="save" class="btn btn-success">save</button>
               </div>
             {!! Form::close() !!}
           </div>
 
           <div class="col col-lg-1">
-            <button type="save" name="save">show</button>
+            <a href="{{ route('users.destroy', ['user' => $user->id]) }}" class="btn btn-info">show</a>
           </div>
           <div class="col col-lg-1">
-            <button type="save" name="save">Delete</button>
+            {!! Form::model($entity, array('route' => array('users.destroy', $user->id),  'method' => 'DELETE') )!!}
+              <button type="submit" name="delete" class="btn btn-danger">delete</button>
+            {!! Form::close() !!}
           </div>
         </div>
       @endforeach
