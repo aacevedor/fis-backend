@@ -71,7 +71,9 @@ class ServicesConfirmController extends Controller
      */
     public function update(Request $request, ServicesConfirm $servicesConfirm)
     {
-        //
+      $servicesConfirm->update($request->all());
+
+      return $servicesConfirm;
     }
 
     /**
