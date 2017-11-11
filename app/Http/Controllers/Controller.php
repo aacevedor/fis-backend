@@ -13,10 +13,10 @@ use App\User;
 use App\PushNotification;
 
 
-class Controller extends BaseController
+class Controller extends BaseControllser
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-
+  
 
     public function devel()
     {
