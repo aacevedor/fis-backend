@@ -292,6 +292,7 @@ class UsersController extends Controller
         $user->{'contracts'} = [];
         $user->{'profile'} = $user->profile;
         $user->{'services'} = $user->services;
+        foreach ( $user->servicesConfirm as $key => $value) { $value->services;  }
         foreach ( $user->services as $key => $value) { $value->confirms; }
         $user->{'services_confirm'} = $user->servicesConfirm;
         $user->{'roles'} = $user->roles()->get()[0];
