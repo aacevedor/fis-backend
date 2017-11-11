@@ -73,9 +73,10 @@ class UsersController extends Controller
           $profile->profession = '';
           $profile->phone = 0;
           $profile->address = '';
-          $profile->geolocalization = json_encode(['lat'=>0,'long'=>0]);
-          $profile->image = '';
+          $profile->geolocalization = json_encode(['lat'=>4.6461602,'long'=>-74.113472]);
+          $profile->image = 'http://lorempixel.com/320/160/?51976';
           $profile->save();
+
 
 
         }
@@ -287,9 +288,11 @@ class UsersController extends Controller
     {
       $user = User::where('ionic_id',$ionic_id)->first();
       if($user){
+        $contracts = [];
         $user->{'profile'} = $user->profile;
         $user->{'services'} = $user->services;
-        foreach ( $user->servicesConfirm as $key => $value) { $value->services;}
+      //  foreach ( $user->servicesConfirm as $key => $value) { $value->services->confirms;}
+        $user->{'contracts'} = array_map( function($e){ dd($e); }, $user->services );
         $user->{'services_confirm'} = $user->servicesConfirm;
         $user->{'roles'} = $user->roles()->get()[0];
         return $user;

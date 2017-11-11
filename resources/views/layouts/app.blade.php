@@ -47,6 +47,9 @@
                       <li class="dropdown">
                             <a href="{{ route('users.list') }}"> Users</a>
                       </li>
+                      <li class="dropdown">
+                            <a href="{{ route('services.list') }}"> Services</a>
+                      </li>
                     </ul>
 
                     @endif

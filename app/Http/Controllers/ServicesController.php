@@ -7,6 +7,25 @@ use Illuminate\Http\Request;
 
 class ServicesController extends Controller
 {
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function list()
+    {
+        $entity = new Services;
+        $services = array();
+        foreach( Services::all() as $key => $service){
+            $services[] = $service;
+            #dd( $user->hasRole('admin') );
+        }
+        #dd($services);
+        return view('services.list', ['entity'=>$entity ,'services' => $services ] );
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -89,5 +108,12 @@ class ServicesController extends Controller
     {
         $service->delete();
         return response()->json(null, 204);
+    }
+
+    public function delete(Services $service)
+    {
+      $service->delete();
+      flash('Servicio eliminado')->success();
+      return redirect()->to('/services');
     }
 }
