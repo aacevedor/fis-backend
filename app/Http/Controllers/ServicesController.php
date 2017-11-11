@@ -85,9 +85,9 @@ class ServicesController extends Controller
      * @param  \App\Services  $services
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Services $services)
+    public function destroy(Services $service)
     {
-        $services->delete();
+        $service->delete();
         return response()->json(null, 204);
     }
 }
