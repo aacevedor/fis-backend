@@ -13,16 +13,23 @@ use App\User;
 use App\PushNotification;
 
 
-class Controller extends BaseControllser
+class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-  
+
 
     public function devel()
     {
 
       $user = new PushNotification();
-      dd($user);
+      $user->add_query( new class{} );
+      $user->add_send_to_all(true);
+      $user->add_emails(['myafarinc@gmail.com']);
+      $user->message('Notificacion');
+      $user->payload( new class{} );
+      $user->android($priority='high',$message = 'Prueba de envio', $title = 'Notific');
+      $user->build();
+      $user->send();
 
       $user = User::find(56);
       dd($user);

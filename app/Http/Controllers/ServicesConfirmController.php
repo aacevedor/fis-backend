@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\ServicesConfirm;
 use Illuminate\Http\Request;
+use App\PushNotification;
+
 
 class ServicesConfirmController extends Controller
 {
@@ -37,6 +39,15 @@ class ServicesConfirmController extends Controller
     public function store(Request $request)
     {
       $service = ServicesConfirm::create($request->all());
+      $notification = new PushNotification();
+      $notification->add_query( new class{} );
+      $notification->add_send_to_all(true);
+      $notification->add_emails(['myafarinc@gmail.com']);
+      $notification->message('Han contratado tus servicios');
+      $notification->payload( new class{} );
+      $notification->android($priority='high',$message = 'El usuario ... ha contratado tu servicio ...', $title = 'Han contratado tus servicio');
+      $notification->build();
+      $notification->send();
       return response()->json($service, 201);
     }
 
