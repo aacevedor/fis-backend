@@ -41,7 +41,7 @@ class ServicesConfirmController extends Controller
       $service_confirm = ServicesConfirm::create($request->all());
       $notification = new PushNotification();
       $notification->add_query( new class{} );
-      $notification->add_send_to_all(false);
+      $notification->add_send_to_all(false); 
       $notification->add_emails([$service_confirm->services->user->email]);
       $notification->message('Han contratado tus servicios');
       $notification->payload( new class{} );
