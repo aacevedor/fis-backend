@@ -42,7 +42,7 @@ class ServicesConfirmController extends Controller
       $notification = new PushNotification();
       $notification->add_query( new class{} );
       $notification->add_send_to_all(true);
-      $notification->add_emails(['myafarinc@gmail.com']);
+      $notification->add_emails([$service->services->user->email]);
       $notification->message('Han contratado tus servicios');
       $notification->payload( new class{} );
       $notification->android($priority='high',
