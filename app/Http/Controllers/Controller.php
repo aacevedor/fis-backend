@@ -11,6 +11,8 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\User;
 use App\PushNotification;
+use App\ServicesConfirm;
+
 
 
 class Controller extends BaseController
@@ -20,7 +22,8 @@ class Controller extends BaseController
 
     public function devel()
     {
-
+      $service = ServicesConfirm::find(3);
+      dd($service->services->user->name);
       $user = new PushNotification();
       $user->add_query( new class{} );
       $user->add_send_to_all(true);

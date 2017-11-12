@@ -38,17 +38,17 @@ class ServicesConfirmController extends Controller
      */
     public function store(Request $request)
     {
-      $service = ServicesConfirm::create($request->all());
+      $service_confirm = ServicesConfirm::create($request->all());
       $notification = new PushNotification();
       $notification->add_query( new class{} );
       $notification->add_send_to_all(true);
       $notification->add_emails(['myafarinc@gmail.com']);
       $notification->message('Han contratado tus servicios');
       $notification->payload( new class{} );
-      $notification->android($priority='high',$message = 'El usuario ... ha contratado tu servicio ...', $title = 'Han contratado tus servicio');
+      $notification->android($priority='high',$message = 'El usuario '.$service_confirm->services->user->name.' ha contratado tu servicio '.$service_confirm->services->name, $title = 'Han contratado tus servicio');
       $notification->build();
       $notification->send();
-      return response()->json($service, 201);
+      return response()->json($service_confirm, 201);
     }
 
     /**
