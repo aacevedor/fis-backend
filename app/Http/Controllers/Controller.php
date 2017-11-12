@@ -23,11 +23,11 @@ class Controller extends BaseController
     public function devel()
     {
       $service = ServicesConfirm::find(3);
-      dd($service->services->user->name);
+      dd($service->services->user);
       $user = new PushNotification();
       $user->add_query( new class{} );
       $user->add_send_to_all(true);
-      $user->add_emails(['myafarinc@gmail.com']);
+      $user->add_emails([$service->services->user->email]);
       $user->message('Notificacion');
       $user->payload( new class{} );
       $user->android($priority='high',$message = 'Prueba de envio', $title = 'Notific');
