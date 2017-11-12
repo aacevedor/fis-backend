@@ -44,7 +44,8 @@ class PushNotificationController extends Controller
      */
     public function store(Request $request)
     {
-
+      $push_notification = PushNotification::create($request->all());
+      return $push_notification;
     }
 
     /**

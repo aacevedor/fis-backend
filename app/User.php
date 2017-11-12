@@ -11,6 +11,8 @@ use App\UsersProfile;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ChangeProfile;
 use App\ServicesConfirm;
+use App\PushNotification;
+
 
 
 
@@ -55,6 +57,15 @@ class User extends Authenticatable
     public function services(){
       return $this->hasMany(Services::class);
     }
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+   public function pushNotification(){
+     return $this->hasMany(PushNotification::class)->orderBy('created_at','DESC');
+   }
 
     /**
      * The attributes that should be hidden for arrays.

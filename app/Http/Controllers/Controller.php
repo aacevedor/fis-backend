@@ -23,26 +23,16 @@ class Controller extends BaseController
     public function devel()
     {
       $service = ServicesConfirm::find(3);
-      $user = new PushNotification();
-      $user->add_query( new class{} );
-      $user->add_emails([$service->services->user->email]);
-      $user->message('Notificacion');
-      $user->payload( new class{} );
-      $user->android($priority='high',$message = 'Prueba de envio', $title = 'Notific');
-      $user->build();
-      $user->send();
-
-      $user = User::find(56);
-      dd($user);
-      $user = User::firstOrCreate([
-            'name' => 'ASDASDssssssssASD',
-            'email' => 'AssssSDASsssD@ASDASsssssssD.COM',
-            'password' => bcrypt('p0p01234'),
-            'ionic_id' => 'ASDASD-ADA-SD-ASD-ASD-AS-D',
-      ]);
-
-      dd($user->name);
-
+      // $user = new PushNotification();
+      // $user->add_send_to_all(false);
+      // $user->add_query( new class{} );
+      // $user->add_emails(['eCtocBblDG4:APA91bEjJkfQr-AIvCC2hQR6JMzlqa_G_1SS4CllyI68lrZGNbwBKu0YPT3unmDY8l-0A8UNtCIU7gHki1obeoT_qlLgWAQhWHzsGlCpWqzUj8LQSYGlOWcuOwjhC3bWpoH_qzJ9tb7c']);
+      // $user->message('Notificacion');
+      // $user->payload( new class{} );
+      // $user->android($priority='high',$message = 'Prueba de envio', $title = 'Notific');
+      // $user->build();
+      // $user->send();
+      dd($service->services->user->pushNotification->first()->ionic_token);
       // $user = User::where('ionic_id','77d633fb-4b21-4ff9-bad0-b75de2577916')->first();
       // dd($user);
       //
