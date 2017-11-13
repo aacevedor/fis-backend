@@ -49,5 +49,7 @@ Route::get('users', 'UsersProfileController@list')->name('users.list');
 Route::get('users-profile/provider', 'UsersProfileController@providerList')->name('users.provider');
 
 Route::get('services', 'ServicesController@list')->name('services.list');
+Route::get('services/all', 'ServicesController@all')->name('services.all');
+
 
 Route::delete('services/{service}', 'ServicesController@delete')->name('services.delete');

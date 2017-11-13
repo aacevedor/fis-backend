@@ -31,6 +31,21 @@ class ServicesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function all()
+    {
+        $services = Services::orderBy('created_at','desc')->get();
+
+        foreach ($services as $key => $service) {
+          $service->user;
+        }
+        return $services;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $services = Services::orderBy('created_at','desc')->take(3)->get();
