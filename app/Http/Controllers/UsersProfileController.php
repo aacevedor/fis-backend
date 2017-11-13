@@ -30,6 +30,23 @@ class UsersProfileController extends Controller
 
     }
 
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function providerList()
+    {
+        $users = array();
+        foreach( User::role('provider')->orderBy('updated_at','desc')->get() as $key => $user){
+            $user->profile;
+            $user->services;
+            $users[] = $user;
+        }
+        return $users;
+    }
+
     /**
      * Display a listing of the resource.
      *

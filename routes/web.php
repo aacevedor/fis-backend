@@ -45,7 +45,9 @@ Route::get('api/user/confirmation/{ionic_id}', 'UsersController@confirmation')->
 Route::get('api/notification/{type}/{id}', 'UsersController@adminNotification')->name('user-change-rol');
 
 Route::get('users', 'UsersProfileController@list')->name('users.list');
-Route::get('services', 'ServicesController@list')->name('services.list');
 
+Route::get('users-profile/provider', 'UsersProfileController@providerList')->name('users.provider');
+
+Route::get('services', 'ServicesController@list')->name('services.list');
 
 Route::delete('services/{service}', 'ServicesController@delete')->name('services.delete');
