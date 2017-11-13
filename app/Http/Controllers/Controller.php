@@ -32,7 +32,7 @@ class Controller extends BaseController
       // $user->android($priority='high',$message = 'Prueba de envio', $title = 'Notific');
       // $user->build();
       // $user->send();
-      dd($service->services->user->pushNotification->first()->ionic_token);
+      dd($service->user_request->name);
       // $user = User::where('ionic_id','77d633fb-4b21-4ff9-bad0-b75de2577916')->first();
       // dd($user);
       //

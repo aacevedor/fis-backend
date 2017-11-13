@@ -46,7 +46,7 @@ class ServicesConfirmController extends Controller
       $notification->message('Han contratado tus servicios');
       $notification->payload( new class{} );
       $notification->android($priority='high',
-                             $message = $service_confirm->services->user->name.' ha contratado tu servicio '.
+                             $message = $service_confirm->user_request->name.' ha contratado tu servicio '.
                              $service_confirm->services->name, $title = 'Han contratado tu servicio'
                             );
       $notification->build();
