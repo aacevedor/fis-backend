@@ -27,6 +27,7 @@ class UsersProfile extends Model
          'description',
          'profession',
          'address',
+         'geolocalization',
       ];
     public function user()
     {
