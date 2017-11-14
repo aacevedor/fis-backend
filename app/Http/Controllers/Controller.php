@@ -12,6 +12,8 @@ use Spatie\Permission\Models\Permission;
 use App\User;
 use App\PushNotification;
 use App\ServicesConfirm;
+use App\Services;
+
 
 
 
@@ -22,7 +24,8 @@ class Controller extends BaseController
 
     public function devel()
     {
-      $service = ServicesConfirm::find(3);
+      $service = Services::find(29);
+
       // $user = new PushNotification();
       // $user->add_send_to_all(false);
       // $user->add_query( new class{} );
@@ -32,7 +35,7 @@ class Controller extends BaseController
       // $user->android($priority='high',$message = 'Prueba de envio', $title = 'Notific');
       // $user->build();
       // $user->send();
-      dd($service->user_request->name);
+      dd($service->comments);
       // $user = User::where('ionic_id','77d633fb-4b21-4ff9-bad0-b75de2577916')->first();
       // dd($user);
       //

@@ -35,7 +35,8 @@ class ServicesCommentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $comment = ServicesComments::create($request->all());
+        return $comment;
     }
 
     /**

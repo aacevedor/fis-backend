@@ -22,9 +22,9 @@ class Services extends Model
       return $this->hasOne(ServicesTypes::class);
     }
 
-    public function service_comments()
+    public function comments()
     {
-      return $this->hasMany(ServicesComments::class);
+      return $this->hasMany(ServicesComments::class,'service_id');
     }
 
     public function user()

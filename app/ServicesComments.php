@@ -9,6 +9,8 @@ class ServicesComments extends Model
 {
     //
 
+    protected $fillable = ['service_id','user_id','description'];
+
 
     public function autor()
     {
