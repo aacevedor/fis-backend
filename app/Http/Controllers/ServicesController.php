@@ -53,6 +53,8 @@ class ServicesController extends Controller
 
         foreach ($services as $key => $service) {
           $service->user;
+          $service->comments;
+          
         }
         return $services;
     }
