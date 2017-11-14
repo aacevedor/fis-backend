@@ -86,6 +86,7 @@ class ServicesController extends Controller
      */
     public function show(Services $service)
     {
+        $service->comments;
         return $service;
     }
 
