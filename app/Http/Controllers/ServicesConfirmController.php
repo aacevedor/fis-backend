@@ -97,10 +97,10 @@ class ServicesConfirmController extends Controller
       }
       else{ // send to client
         $user_send = $servicesConfirm->user_request->pushNotification->first()->ionic_token;
-        if($servicesConfirm->status_id == 2) $message = 'Ha aceptado tu solicitud';
-        if($servicesConfirm->status_id == 3) $message = 'Ha comezado a trabajar en tu solicitud';
-        if($servicesConfirm->status_id == 4) $message = 'Ha terminado su lavor';
-        if($servicesConfirm->status_id == 6) $message = 'Ha rechazado tu solicitud';
+        if($servicesConfirm->status_id == 2) $message = 'Han aceptado tu solicitud';
+        if($servicesConfirm->status_id == 3) $message = 'Han comezado a trabajar en tu solicitud';
+        if($servicesConfirm->status_id == 4) $message = 'Han terminado su lavor';
+        if($servicesConfirm->status_id == 6) $message = 'Han rechazado tu solicitud';
       }
 
       $notification = new PushNotification();
