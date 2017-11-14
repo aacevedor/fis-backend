@@ -24,7 +24,35 @@ class Controller extends BaseController
 
     public function devel()
     {
-      $service = Services::find(29);
+      $servicesConfirm = ServicesConfirm::find(8);
+
+      $solicitante = [2,3,4,6];
+      $prestador = [1,5,7];
+      $user_send = '';
+      // send to provider
+      if( in_array($servicesConfirm->status_id , $prestador) ){
+        $user_send = $servicesConfirm->services->user->pushNotification->first()->ionic_token;
+        $message = ( $servicesConfirm->status_id == 5 ) ? $servicesConfirm->user_request->name . 'ha aprobado tu trabajo.':'Ha cancelado la solitud.';
+      }
+      else{ // send to client
+        $user_send = $servicesConfirm->user_request->pushNotification->first()->ionic_token;
+        if($servicesConfirm->status_id == 2) $message = 'Ha aceptado tu solicitud';
+        if($servicesConfirm->status_id == 3) $message = 'Ha comezado a trabajar en tu solicitud';
+        if($servicesConfirm->status_id == 4) $message = 'Ha terminado su lavor';
+        if($servicesConfirm->status_id == 6) $message = 'Ha rechazado tu solicitud';
+      }
+
+
+      $notification = new PushNotification();
+      $notification->add_query( new class{} );
+      $notification->add_send_to_all(false);
+      $notification->add_tokens([$user_send]);
+      $notification->message('Estatus:');
+      $notification->payload( new class{} );
+      $notification->android($priority='high',$message,$title = 'Estatus' );
+      $notification->build();
+      $notification->send();
+
 
       // $user = new PushNotification();
       // $user->add_send_to_all(false);
@@ -35,7 +63,7 @@ class Controller extends BaseController
       // $user->android($priority='high',$message = 'Prueba de envio', $title = 'Notific');
       // $user->build();
       // $user->send();
-      dd($service->comments);
+      dd($notification);
       // $user = User::where('ionic_id','77d633fb-4b21-4ff9-bad0-b75de2577916')->first();
       // dd($user);
       //

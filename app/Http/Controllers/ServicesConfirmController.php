@@ -96,7 +96,7 @@ class ServicesConfirmController extends Controller
         $message = ( $servicesConfirm->status_id == 5 ) ? $service_confirm->user_request->name . 'ha aprobado tu trabajo.':'Ha cancelado la solitud.';
       }
       else{ // send to client
-        $user_send = $service_confirm->user_request->ionic_token;
+        $user_send = $service_confirm->user_request->pushNotification->first()->ionic_token;
         if($servicesConfirm->status_id == 2) $message = 'Ha aceptado tu solicitud';
         if($servicesConfirm->status_id == 3) $message = 'Ha comezado a trabajar en tu solicitud';
         if($servicesConfirm->status_id == 4) $message = 'Ha terminado su lavor';
@@ -109,7 +109,7 @@ class ServicesConfirmController extends Controller
       $notification->add_tokens([$user_send]);
       $notification->message('Estatus:');
       $notification->payload( new class{} );
-      $notification->android($priority='high',$message );
+      $notification->android($priority='high',$message $title = 'Estatus:');
       $notification->build();
       $notification->send();
 
