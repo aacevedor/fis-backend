@@ -109,7 +109,7 @@ class ServicesConfirmController extends Controller
       $notification->add_tokens([$user_send]);
       $notification->message('Estatus:');
       $notification->payload( new class{} );
-      $notification->android($priority='high',$message, $title = 'Servicio '.$servicesConfirm->services->name );
+      $notification->android($priority='high',$message, $title = 'Servicio "'.$servicesConfirm->services->name.'"' );
       $notification->build();
       $notification->send();
 
