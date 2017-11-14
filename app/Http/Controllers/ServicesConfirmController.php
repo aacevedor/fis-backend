@@ -92,11 +92,11 @@ class ServicesConfirmController extends Controller
       $user_send = '';
       // send to provider
       if( in_array($servicesConfirm->status_id , $prestador) ){
-        $user_send = $service_confirm->services->user->pushNotification->first()->ionic_token;
-        $message = ( $servicesConfirm->status_id == 5 ) ? $service_confirm->user_request->name . 'ha aprobado tu trabajo.':'Ha cancelado la solitud.';
+        $user_send = $servicesConfirm->services->user->pushNotification->first()->ionic_token;
+        $message = ( $servicesConfirm->status_id == 5 ) ? $servicesConfirm->user_request->name . 'ha aprobado tu trabajo.':'Ha cancelado la solitud.';
       }
       else{ // send to client
-        $user_send = $service_confirm->user_request->pushNotification->first()->ionic_token;
+        $user_send = $servicesConfirm->user_request->pushNotification->first()->ionic_token;
         if($servicesConfirm->status_id == 2) $message = 'Ha aceptado tu solicitud';
         if($servicesConfirm->status_id == 3) $message = 'Ha comezado a trabajar en tu solicitud';
         if($servicesConfirm->status_id == 4) $message = 'Ha terminado su lavor';
