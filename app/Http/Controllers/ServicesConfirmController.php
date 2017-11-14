@@ -87,6 +87,32 @@ class ServicesConfirmController extends Controller
     {
       $servicesConfirm->update($request->all());
 
+      $solicitante = [2,3,4,6];
+      $prestador = [1,5,7];
+      $user_send = '';
+      // send to provider
+      if( in_array($servicesConfirm->status_id , $prestador) ){
+        $user_send = $service_confirm->services->user->pushNotification->first()->ionic_token;
+        $message = ( $servicesConfirm->status_id == 5 ) ? $service_confirm->user_request->name . 'ha aprobado tu trabajo.':'Ha cancelado la solitud.';
+      }
+      else{ // send to client
+        $user_send = $service_confirm->user_request->ionic_token;
+        if($servicesConfirm->status_id == 2) $message = 'Ha aceptado tu solicitud';
+        if($servicesConfirm->status_id == 3) $message = 'Ha comezado a trabajar en tu solicitud';
+        if($servicesConfirm->status_id == 4) $message = 'Ha terminado su lavor';
+        if($servicesConfirm->status_id == 6) $message = 'Ha rechazado tu solicitud';
+      }
+
+      $notification = new PushNotification();
+      $notification->add_query( new class{} );
+      $notification->add_send_to_all(false);
+      $notification->add_tokens([$user_send]);
+      $notification->message('Estatus:');
+      $notification->payload( new class{} );
+      $notification->android($priority='high',$message );
+      $notification->build();
+      $notification->send();
+
       return $servicesConfirm;
     }
 
