@@ -132,4 +132,17 @@ class UsersProfileController extends Controller
         //
     }
 
+
+    public function locate(){
+      $usersProfiles = UsersProfile::all();
+      $users = [];
+      foreach( $usersProfiles as $key => $user ){
+          $users[$key]['name'] = $user->first_name;
+          $users[$key]['localtion'] = $user->geolocalization; 
+          $users[$key]['profesion'] = $user->profession;
+      }
+
+      return $users;
+    }
+
 }

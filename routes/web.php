@@ -39,17 +39,15 @@ Route::resource('api/services-confirm', 'ServicesConfirmController');
 Route::resource('api/services-comments', 'ServicesCommentsController');
 Route::resource('api/push', 'PushNotificationController');
 
-
-
 Route::get('api/user/confirmation/{ionic_id}', 'UsersController@confirmation')->name('user-confirmation');
 Route::get('api/notification/{type}/{id}', 'UsersController@adminNotification')->name('user-change-rol');
 
 Route::get('users', 'UsersProfileController@list')->name('users.list');
+Route::get('users/locate', 'UsersProfileController@locate')->name('users.locate');
 
 Route::get('users-profile/provider', 'UsersProfileController@providerList')->name('users.provider');
 
 Route::get('services', 'ServicesController@list')->name('services.list');
 Route::get('services/all', 'ServicesController@all')->name('services.all');
-
 
 Route::delete('services/{service}', 'ServicesController@delete')->name('services.delete');
